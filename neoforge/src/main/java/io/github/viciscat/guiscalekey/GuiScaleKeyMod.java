@@ -1,0 +1,45 @@
+package io.github.viciscat.guiscalekey;
+
+
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
+import net.neoforged.neoforge.client.event.ScreenEvent;
+
+@Mod(Constants.MOD_ID)
+public class GuiScaleKeyMod {
+
+    public GuiScaleKeyMod(IEventBus eventBus) {
+
+        // This method is invoked by the NeoForge mod loader when it is ready
+        // to load your mod. You can access NeoForge and Common code in this
+        // project.
+
+        // Use NeoForge to bootstrap the Common mod.
+        Constants.LOG.info("Hello NeoForge world!");
+        CommonClass.init();
+        eventBus.register(this);
+    }
+
+    @SubscribeEvent
+    public void screenKeyPressEvent(ScreenEvent.KeyPressed event) {
+        CommonClass.checkKeyPressesScreen(event.getKeyCode(), event.getScanCode());
+    }
+
+    @SubscribeEvent
+    public void screenMouseEvent(ScreenEvent.MouseButtonPressed event) {
+        CommonClass.checkMouseScreen(event.getButton());
+    }
+
+    @SubscribeEvent
+    public void registerKeys(RegisterKeyMappingsEvent event) {
+        CommonClass.registerKeys(event::register);
+    }
+
+    @SubscribeEvent
+    public void onClientTick(ClientTickEvent.Pre event) {
+        CommonClass.checkKeyPresses();
+    }
+}
