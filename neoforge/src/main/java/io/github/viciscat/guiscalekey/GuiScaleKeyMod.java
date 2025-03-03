@@ -7,6 +7,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.event.ScreenEvent;
+import net.neoforged.neoforge.common.NeoForge;
 
 @Mod(Constants.MOD_ID)
 public class GuiScaleKeyMod {
@@ -18,22 +19,21 @@ public class GuiScaleKeyMod {
         // project.
 
         // Use NeoForge to bootstrap the Common mod.
-        Constants.LOG.info("Hello NeoForge world!");
         CommonClass.init();
-        eventBus.register(this);
+        NeoForge.EVENT_BUS.register(this);
+        eventBus.addListener(this::registerKeys);
     }
 
     @SubscribeEvent
-    public void screenKeyPressEvent(ScreenEvent.KeyPressed event) {
+    public void screenKeyPressEvent(ScreenEvent.KeyPressed.Post event) {
         CommonClass.checkKeyPressesScreen(event.getKeyCode(), event.getScanCode());
     }
 
     @SubscribeEvent
-    public void screenMouseEvent(ScreenEvent.MouseButtonPressed event) {
+    public void screenMouseEvent(ScreenEvent.MouseButtonPressed.Post event) {
         CommonClass.checkMouseScreen(event.getButton());
     }
 
-    @SubscribeEvent
     public void registerKeys(RegisterKeyMappingsEvent event) {
         CommonClass.registerKeys(event::register);
     }
