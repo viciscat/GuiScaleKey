@@ -1,5 +1,5 @@
 {
-  "key.categories.guiscalekeybind": "GUI Scale Keybind Mod",
-  "key.guiscalekeybind.increase_scale": "Increase GUI Scale",
-  "key.guiscalekeybind.decrease_scale": "Decrease GUI Scale"
+  "key.categories.guiscalekeys": "GUI Scale Keys Mod",
+  "key.guiscalekeys.increase_scale": "Increase GUI Scale",
+  "key.guiscalekeys.decrease_scale": "Decrease GUI Scale"
 }

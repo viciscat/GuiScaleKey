@@ -1,4 +1,4 @@
-# GUI Scale Key Mod
+# GUI Scale Keys Mod
 
 A very simple mod that adds configurable keybindings to decrease and increase GUI scale.
 

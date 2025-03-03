@@ -18,7 +18,7 @@ public class CommonClass {
     // code that gets invoked by the entry point of the loader specific projects.
     public static void init() {
 
-        Constants.LOG.info("Starting GuiScaleKey mod on {}!", Services.PLATFORM.getPlatformName());
+        Constants.LOG.info("Starting GuiScaleKeys mod on {}!", Services.PLATFORM.getPlatformName());
         //Constants.LOG.info("The ID for diamonds is {}", BuiltInRegistries.ITEM.getKey(Items.DIAMOND));
 
         // It is common for all supported loaders to provide a similar feature that can not be used directly in the
