@@ -4,6 +4,7 @@ import io.github.viciscat.guiscalekey.platform.Services;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.OptionInstance;
+import net.minecraft.client.gui.screens.options.controls.KeyBindsScreen;
 
 import java.util.function.Consumer;
 
@@ -47,6 +48,7 @@ public class CommonClass {
     }
 
     public static void checkKeyPressesScreen(int key, int scancode) {
+        if (Minecraft.getInstance().screen instanceof KeyBindsScreen) return;
         if (Constants.INCREASE_SCALE_KEY.matches(key, scancode)) {
             changeGuiScale(true);
         }
@@ -56,6 +58,7 @@ public class CommonClass {
     }
 
     public static void checkMouseScreen(int button) {
+        if (Minecraft.getInstance().screen instanceof KeyBindsScreen) return;
         if (Constants.INCREASE_SCALE_KEY.matchesMouse(button)) {
             changeGuiScale(true);
         }
