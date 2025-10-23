@@ -1,5 +1,5 @@
 {
-  "key.categories.guiscalekeys": "GUI Scale Keys Mod",
+  "key.category.guiscalekeys.guiscalekeys": "GUI Scale Keys Mod",
   "key.guiscalekeys.increase_scale": "Increase GUI Scale",
   "key.guiscalekeys.decrease_scale": "Decrease GUI Scale"
 }

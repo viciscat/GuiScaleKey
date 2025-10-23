@@ -26,12 +26,12 @@ public class GuiScaleKeyMod {
 
     @SubscribeEvent
     public void screenKeyPressEvent(ScreenEvent.KeyPressed.Post event) {
-        CommonClass.checkKeyPressesScreen(event.getKeyCode(), event.getScanCode());
+        CommonClass.checkKeyPressesScreen(event.getKeyEvent());
     }
 
     @SubscribeEvent
     public void screenMouseEvent(ScreenEvent.MouseButtonPressed.Post event) {
-        CommonClass.checkMouseScreen(event.getButton());
+        CommonClass.checkMouseScreen(event.getMouseButtonEvent());
     }
 
     public void registerKeys(RegisterKeyMappingsEvent event) {

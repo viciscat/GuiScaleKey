@@ -2,9 +2,7 @@ package io.github.viciscat.guiscalekey;
 
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.client.event.ScreenEvent;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
@@ -19,26 +17,25 @@ public class GuiScaleKeyMod {
 
         // Use Forge to bootstrap the Common mod.
         CommonClass.init();
-        MinecraftForge.EVENT_BUS.register(this);
-        context.getModEventBus().addListener(this::registerKeys);
+        ScreenEvent.KeyPressed.Post.BUS.addListener(this::screenKeyPressEvent);
+        RegisterKeyMappingsEvent.BUS.addListener(this::registerKeys);
+        ScreenEvent.MouseButtonPressed.Post.BUS.addListener(this::screenMouseEvent);
+        TickEvent.ClientTickEvent.Pre.BUS.addListener(this::onClientTick);
 
     }
 
-    @SubscribeEvent
     public void screenKeyPressEvent(ScreenEvent.KeyPressed.Post event) {
-        CommonClass.checkKeyPressesScreen(event.getKeyCode(), event.getScanCode());
+        CommonClass.checkKeyPressesScreen(event.getInfo());
     }
 
-    @SubscribeEvent
     public void screenMouseEvent(ScreenEvent.MouseButtonPressed.Post event) {
-        CommonClass.checkMouseScreen(event.getButton());
+        CommonClass.checkMouseScreen(event.getInfo());
     }
 
     public void registerKeys(RegisterKeyMappingsEvent event) {
         CommonClass.registerKeys(event::register);
     }
 
-    @SubscribeEvent
     public void onClientTick(TickEvent.ClientTickEvent.Pre event) {
         CommonClass.checkKeyPresses();
     }

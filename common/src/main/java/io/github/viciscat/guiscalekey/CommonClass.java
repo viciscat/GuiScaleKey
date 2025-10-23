@@ -5,6 +5,8 @@ import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.OptionInstance;
 import net.minecraft.client.gui.screens.options.controls.KeyBindsScreen;
+import net.minecraft.client.input.KeyEvent;
+import net.minecraft.client.input.MouseButtonEvent;
 
 import java.util.function.Consumer;
 
@@ -47,17 +49,17 @@ public class CommonClass {
         }
     }
 
-    public static void checkKeyPressesScreen(int key, int scancode) {
+    public static void checkKeyPressesScreen(KeyEvent keyEvent) {
         if (Minecraft.getInstance().screen instanceof KeyBindsScreen) return;
-        if (Constants.INCREASE_SCALE_KEY.matches(key, scancode)) {
+        if (Constants.INCREASE_SCALE_KEY.matches(keyEvent)) {
             changeGuiScale(true);
         }
-        if (Constants.DECREASE_SCALE_KEY.matches(key, scancode)) {
+        if (Constants.DECREASE_SCALE_KEY.matches(keyEvent)) {
             changeGuiScale(false);
         }
     }
 
-    public static void checkMouseScreen(int button) {
+    public static void checkMouseScreen(MouseButtonEvent button) {
         if (Minecraft.getInstance().screen instanceof KeyBindsScreen) return;
         if (Constants.INCREASE_SCALE_KEY.matchesMouse(button)) {
             changeGuiScale(true);

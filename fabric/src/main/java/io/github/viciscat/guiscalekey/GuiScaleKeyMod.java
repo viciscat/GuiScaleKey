@@ -23,10 +23,12 @@ public class GuiScaleKeyMod implements ModInitializer {
 
         ClientTickEvents.START_CLIENT_TICK.register(client -> CommonClass.checkKeyPresses());
         ScreenEvents.BEFORE_INIT.register((minecraft, screen, i, i1) -> {
-            ScreenKeyboardEvents.afterKeyPress(screen).register((screen1, key, scancode, modifiers) ->
-                    CommonClass.checkKeyPressesScreen(key, scancode));
-            ScreenMouseEvents.afterMouseClick(screen).register((screen1, x, y, mouseButton) ->
-                    CommonClass.checkMouseScreen(mouseButton));
+            ScreenKeyboardEvents.afterKeyPress(screen).register((screen1, key) ->
+                    CommonClass.checkKeyPressesScreen(key));
+            ScreenMouseEvents.afterMouseClick(screen).register((screen1, event, consumed) -> {
+                CommonClass.checkMouseScreen(event);
+                return false;
+            });
         });
     }
 }
