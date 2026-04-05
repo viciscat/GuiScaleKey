@@ -2,7 +2,7 @@ package io.github.viciscat.guiscalekey;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenKeyboardEvents;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenMouseEvents;
@@ -19,13 +19,13 @@ public class GuiScaleKeyMod implements ModInitializer {
         // Use Fabric to bootstrap the Common mod.
         CommonClass.init();
 
-        CommonClass.registerKeys(KeyBindingHelper::registerKeyBinding);
+        CommonClass.registerKeys(KeyMappingHelper::registerKeyMapping);
 
-        ClientTickEvents.START_CLIENT_TICK.register(client -> CommonClass.checkKeyPresses());
-        ScreenEvents.BEFORE_INIT.register((minecraft, screen, i, i1) -> {
-            ScreenKeyboardEvents.afterKeyPress(screen).register((screen1, key) ->
+        ClientTickEvents.START_CLIENT_TICK.register(_ -> CommonClass.checkKeyPresses());
+        ScreenEvents.BEFORE_INIT.register((_, screen, _, _) -> {
+            ScreenKeyboardEvents.afterKeyPress(screen).register((_, key) ->
                     CommonClass.checkKeyPressesScreen(key));
-            ScreenMouseEvents.afterMouseClick(screen).register((screen1, event, consumed) -> {
+            ScreenMouseEvents.afterMouseClick(screen).register((_, event, _) -> {
                 CommonClass.checkMouseScreen(event);
                 return false;
             });
