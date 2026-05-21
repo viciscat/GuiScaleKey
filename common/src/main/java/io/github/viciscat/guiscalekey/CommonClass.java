@@ -4,7 +4,7 @@ import io.github.viciscat.guiscalekey.platform.Services;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.OptionInstance;
-import net.minecraft.client.gui.screens.options.controls.KeyBindsScreen;
+import net.minecraft.client.gui.screens.controls.KeyBindsScreen;
 
 import java.util.function.Consumer;
 
@@ -74,5 +74,6 @@ public class CommonClass {
         i = i == 0 ? mc.getWindow().calculateScale(0, mc.isEnforceUnicode()) : i;
         scale.set(Math.max(1, i + (up ? 1 : -1)));
         mc.options.save();
+        mc.resizeDisplay();
     }
 }

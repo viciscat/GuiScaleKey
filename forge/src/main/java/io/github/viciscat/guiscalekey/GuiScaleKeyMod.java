@@ -39,7 +39,7 @@ public class GuiScaleKeyMod {
     }
 
     @SubscribeEvent
-    public void onClientTick(TickEvent.ClientTickEvent.Pre event) {
-        CommonClass.checkKeyPresses();
+    public void onClientTick(TickEvent.ClientTickEvent event) {
+        if (event.phase == TickEvent.Phase.START) CommonClass.checkKeyPresses();
     }
 }
