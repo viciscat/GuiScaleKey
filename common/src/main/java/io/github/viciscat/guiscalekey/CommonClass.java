@@ -50,7 +50,7 @@ public class CommonClass {
     }
 
     public static void checkKeyPressesScreen(KeyEvent keyEvent) {
-        if (Minecraft.getInstance().screen instanceof KeyBindsScreen) return;
+        if (Minecraft.getInstance().gui.screen() instanceof KeyBindsScreen) return;
         if (Constants.INCREASE_SCALE_KEY.matches(keyEvent)) {
             changeGuiScale(true);
         }
@@ -60,7 +60,7 @@ public class CommonClass {
     }
 
     public static void checkMouseScreen(MouseButtonEvent button) {
-        if (Minecraft.getInstance().screen instanceof KeyBindsScreen) return;
+        if (Minecraft.getInstance().gui.screen() instanceof KeyBindsScreen) return;
         if (Constants.INCREASE_SCALE_KEY.matchesMouse(button)) {
             changeGuiScale(true);
         }
