@@ -1,8 +1,8 @@
 package io.github.viciscat.guiscalekey;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.resources.Identifier;
-import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,12 +15,12 @@ public class Constants {
 
 	public static final KeyMapping INCREASE_SCALE_KEY = new KeyMapping(
 			"key.guiscalekeys.increase_scale",
-			GLFW.GLFW_KEY_F7,
+			InputConstants.KEY_F7,
 			CATEGORY
 	);
 	public static final KeyMapping DECREASE_SCALE_KEY = new KeyMapping(
 			"key.guiscalekeys.decrease_scale",
-			GLFW.GLFW_KEY_F6,
+			InputConstants.KEY_F6,
 			CATEGORY
 	);
 	}
